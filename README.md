@@ -52,9 +52,9 @@ Evaluate the model with the testing data.
 class Neuralnet(nn.Module):
    def __init__(self):
         super().__init__()
-        self.n1=nn.Linear(1,10)
-        self.n2=nn.Linear(10,20)
-        self.n3=nn.Linear(20,1)
+        self.n1=nn.Linear(1,8)
+        self.n2=nn.Linear(8,10)
+        self.n3=nn.Linear(10,1)
         self.relu=nn.ReLU()
         self.history={'loss': []}
    def forward(self,x):
@@ -65,23 +65,23 @@ class Neuralnet(nn.Module):
 
 
 # Initialize the Model, Loss Function, and Optimizer
-nithi=NeuralNet()
+sub=NeuralNet()
 criterion = nn.MSELoss()
-optimizer = optim.RMSprop(nithi.parameters(),lr=0.001)
+optimizer = optim.RMSprop(sub.parameters(),lr=0.001)
 
-def train_model(nithi, X_train, y_train, criterion, optimizer, epochs=1000):
+def train_model(sub, X_train, y_train, criterion, optimizer, epochs=1000):
     # initialize history before loop
-    nithi.history = {'loss': []}
+    sub.history = {'loss': []}
 
     for epoch in range(epochs):
         optimizer.zero_grad()
-        outputs = nithi(X_train)
+        outputs = sub(X_train)
         loss = criterion(outputs, y_train)
         loss.backward()
         optimizer.step()
 
         # record loss
-        nithi.history['loss'].append(loss.item())
+        sub.history['loss'].append(loss.item())
 
         if epoch % 200 == 0:
             print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
@@ -104,7 +104,7 @@ def train_model(nithi, X_train, y_train, criterion, optimizer, epochs=1000):
 ### New Sample Data Prediction
 ```
 X_n1_1 = torch.tensor([[9]], dtype=torch.float32)
-prediction = nithi(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+prediction = sub(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
 print(f'Prediction: {prediction}')
 ```
 <img width="912" height="52" alt="image" src="https://github.com/user-attachments/assets/81d835e9-7edc-47d3-9dc6-42958eaa3fc8" />
