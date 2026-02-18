@@ -90,24 +90,30 @@ def train_model(sub, X_train, y_train, criterion, optimizer, epochs=1000):
 ```
 ## Dataset Information
 
-<img width="191" height="529" alt="image" src="https://github.com/user-attachments/assets/e7a9ab5c-680c-405e-9c1d-7d455a6e16b3" />
+<img width="768" height="375" alt="image" src="https://github.com/user-attachments/assets/7e81c46b-e278-40d6-b0fa-a78286d4ccfb" />
+
 
 ## OUTPUT
 
-<img width="480" height="125" alt="image" src="https://github.com/user-attachments/assets/f557f51e-0a10-469e-aa66-ec9d0b01f693" />
+<img width="432" height="242" alt="image" src="https://github.com/user-attachments/assets/d1a2b806-f492-4329-977c-450b3ca5bc60" />
+
 
 
 ### Training Loss Vs Iteration Plot
 
-<img width="1011" height="615" alt="image" src="https://github.com/user-attachments/assets/5ab07ea3-4cdc-4867-aa98-46af5c9ab5c4" />
+<img width="721" height="572" alt="image" src="https://github.com/user-attachments/assets/db954f05-29bc-4180-b921-d6a78e475542" />
+
 
 ### New Sample Data Prediction
 ```
-X_n1_1 = torch.tensor([[9]], dtype=torch.float32)
-prediction = sub(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
-print(f'Prediction: {prediction}')
+X_new = torch.tensor([[9]], dtype=torch.float32)
+X_new_scaled = torch.tensor(scaler.transform(X_new), dtype=torch.float32)
+
+prediction = subhash(X_new_scaled).item()
+print(f"Prediction for Input = 9 : {prediction}")
 ```
-<img width="912" height="52" alt="image" src="https://github.com/user-attachments/assets/81d835e9-7edc-47d3-9dc6-42958eaa3fc8" />
+<img width="451" height="38" alt="image" src="https://github.com/user-attachments/assets/fd9d074e-247a-48d5-b547-38e91625cef7" />
+
 
 ## RESULT
 
